@@ -1,19 +1,13 @@
 function daysInYear(year) {
     try {
         if (!Number.isInteger(year)) {
-            throw new SyntaxError("not valid");
+            throw new SyntaxError("not a positive integer");
         }
 
-        let days = 366;
-        const yearStart = new Date(year, 0, 0).getTime();
-        const yearEnd = new Date(year + 1, 0, 0).getTime();
-        const milliSeconds = yearEnd - yearStart;
+        const isIntercalary = year % 400 === 0
+            || (year % 100 !== 0 && year % 4 === 0);
 
-        if (milliSeconds % 365 === 0) {
-            days = 365;
-        }
-
-        return days;
+        return isIntercalary ? 366 : 365;
     } catch(e) {
         console.log(e);
     }
