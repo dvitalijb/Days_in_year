@@ -1,16 +1,20 @@
 function daysInYear(year) {
     try {
         if (!Number.isInteger(year)) {
-            throw 'not valid';
+            throw new SyntaxError("not valid");
         }
 
-        let sum = 0;
+        let days = 366;
+        const yearStart = new Date(year, 0, 0).getTime();
+        const yearEnd = new Date(year + 1, 0, 0).getTime()
+        const milliSeconds = yearEnd - yearStart;
 
-        for (let x = 0; x < 12; x++) {
-            sum += new Date(year, x, 0).getDate();
+        if (milliSeconds % 365 === 0) {
+            days = 365;
         }
-        return sum;
-    } catch(e) {
+
+        return days;
+    } catch (e) {
         console.log(e);
     }
 }
