@@ -6,7 +6,7 @@ function daysInYear(year) {
 
         let days = 366;
         const yearStart = new Date(year, 0, 0).getTime();
-        const yearEnd = new Date(year + 1, 0, 0).getTime()
+        const yearEnd = new Date(year + 1, 0, 0).getTime();
         const milliSeconds = yearEnd - yearStart;
 
         if (milliSeconds % 365 === 0) {
@@ -14,7 +14,7 @@ function daysInYear(year) {
         }
 
         return days;
-    } catch (e) {
+    } catch(e) {
         console.log(e);
     }
 }
